@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 
-
 namespace ParksApiContext.Models
 {
   public class ParksApiContext : DbContext

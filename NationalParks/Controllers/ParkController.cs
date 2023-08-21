@@ -17,7 +17,7 @@ namespace NationalParks.Controllers
     }
     // GET api/parks
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Destination>>> Get (string ParkName, string ParkCity, string ParkState)
+    public async Task<ActionResult<IEnumerable<Park>>> Get (string ParkName, string ParkCity, string ParkState)
     {
       IQueryable<Park> query = _db.Parks.AsQueryable();
       
