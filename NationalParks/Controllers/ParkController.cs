@@ -6,28 +6,32 @@ namespace NationalParks.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class ParksController : ControllerBase
+  public class ParkController : ControllerBase
   {
     private readonly ParksApiContext _db;
 
     
-    public DestinationsController(TravelAPIContext db)
+    public ParkController(ParksApiContext db)
     {
       _db = db;
     }
-    // GET api/destinations
+    // GET api/parks
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Destination>>> Get (int destinationId, string cityName, string countryName, string review, int rating )
+    public async Task<ActionResult<IEnumerable<Destination>>> Get (string ParkName, string ParkCity, string ParkState)
     {
-      IQueryable<Destination> query = _db.Destinations.AsQueryable();
+      IQueryable<Park> query = _db.Parks.AsQueryable();
       
-      if (cityName != null)
+      if (ParkName != null)
       {
-        query = query.Where(entry => entry.CityName == cityName);
+        query = query.Where(entry => entry.ParkName == ParkName);
       }
-       if (countryName != null)
+       if (ParkCity != null)
       {
-        query = query.Where(entry => entry.CountryName == countryName);
+        query = query.Where(entry => entry.ParkCity == ParkCity);
+      }
+      if (ParkState != null)
+      {
+        query = query.Where(entry => entry.ParkState == ParkState);
       }
       if (rating > 0)
       {
