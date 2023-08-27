@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 
-
 namespace NationalParks.Models
 {
   public class ParksApiContext : DbContext
@@ -22,7 +21,6 @@ namespace NationalParks.Models
             new Park { ParkId = 5, ParkName = "RedWood", ParkCity = "Crescent City", ParkState = "California", Rating = 7},
             new Park { ParkId = 6, ParkName = "New", ParkCity = "New City", ParkState = "New York", Rating = 10}
 
-    
         );
     }
   }
