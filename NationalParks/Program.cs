@@ -1,33 +1,28 @@
 using NationalParks.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+     
+});
 
-builder.Services.AddDbContext<ParksApiContext>(
-    dbContextOptions => dbContextOptions
-        .UseMySql(
-            builder.Configuration["ConnectionStrings:DefaultConnection"],
-            ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"])
-        )
-);
+builder.Services.AddDbContext<ParksApiContext>(dbContextOptions =>
+{
+    dbContextOptions.UseMySql(builder.Configuration["ConnectionStrings:DefaultConnection"],
+        ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]));
+});
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
     {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["AppSettings:Token"])),
-            ValidateIssuer = false,
-            ValidateAudience = false
-        };
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
     });
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -36,17 +31,17 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+   
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-else 
+else
 {
+    
     app.UseHttpsRedirection();
 }
 
-app.UseAuthentication();
-app.UseAuthorization();
-
+app.UseCors();
 app.MapControllers();
 
 app.Run();
