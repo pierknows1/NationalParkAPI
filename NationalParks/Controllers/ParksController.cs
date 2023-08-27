@@ -55,8 +55,8 @@ namespace NationalParks.Controllers
             {
                 QueriedParks = parks,
                 MatchingParks = parks.Count, //how many parks will show based on the number page one is on, anything beyond 3 will be 0
-                TotalParks = totalCount,     // how many parks in the db
-                CurrentPage = page,          // the page ID 
+                TotalParks = totalCount,     // how many parks are in the db
+                CurrentPage = page,          // current page ID 
                 ParksPerPage = pageSize      // how many parks show per page
             };
 
