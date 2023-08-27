@@ -39,8 +39,9 @@ namespace NationalParks.Controllers
                 query = query.Where(e => e.ParkState == parkState);
             }
 
-             int totalCount = await query.CountAsync();
-            
+            //added pagination to Get because my newtonsoft.json didnt work
+
+            int totalCount = await query.CountAsync();
             int skip = (page - 1) * pageSize;
 
             List<Park> parks = await query
@@ -48,13 +49,15 @@ namespace NationalParks.Controllers
                   .Take(pageSize)
                   .ToListAsync();
 
+            // Wont change DB 
+            //If the user tries to get to the 4th page, he will get empty args
             var response = new
             {
                 QueriedParks = parks,
-                MatchingParks = parks.Count,
-                TotalParks = totalCount,
-                CurrentPage = page,
-                ParksPerPage = pageSize
+                MatchingParks = parks.Count, //how many parks will show based on the number page one is on, anything beyond 3 will be 0
+                TotalParks = totalCount,     // how many parks in the db
+                CurrentPage = page,          // the page ID 
+                ParksPerPage = pageSize      // how many parks show per page
             };
 
     return Ok(response);
