@@ -80,6 +80,14 @@ namespace NationalParks.Migrations
                             ParkName = "RedWood",
                             ParkState = "California",
                             Rating = 7
+                        },
+                        new
+                        {
+                            ParkId = 6,
+                            ParkCity = "New City",
+                            ParkName = "New",
+                            ParkState = "New York",
+                            Rating = 10
                         });
                 });
 #pragma warning restore 612, 618

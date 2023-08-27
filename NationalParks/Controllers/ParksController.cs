@@ -51,8 +51,7 @@ namespace NationalParks.Controllers
       return CreatedAtAction(nameof(Post), new { id = park.ParkId }, park);
     }
 
-
-    //Get api/Parks/2
+    //Get api/Parks/{id}
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Park>> GetPark(int id)
@@ -93,9 +92,8 @@ namespace NationalParks.Controllers
         }
       }
 
-      return NoContent();
+      return Ok();
     }
-
 
     private bool ParkExists(int id)
     {

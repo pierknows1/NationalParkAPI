@@ -41,7 +41,8 @@ namespace NationalParks.Migrations
                     { 2, "Yosemite National Park", "Yosemite", "California", 9 },
                     { 3, "Furnace Creek", "Death Valley", "California", 8 },
                     { 4, "Hawaii National Park", "Hawaii Volcanoes", "Hawaii", 10 },
-                    { 5, "Crescent City", "RedWood", "California", 7 }
+                    { 5, "Crescent City", "RedWood", "California", 7 },
+                    { 6, "New City", "New", "New York", 10 }
                 });
         }
 

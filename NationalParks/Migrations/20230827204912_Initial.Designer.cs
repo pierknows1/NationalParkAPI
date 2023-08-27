@@ -10,7 +10,7 @@ using NationalParks.Models;
 namespace NationalParks.Migrations
 {
     [DbContext(typeof(ParksApiContext))]
-    [Migration("20230827175907_Initial")]
+    [Migration("20230827204912_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,6 +82,14 @@ namespace NationalParks.Migrations
                             ParkName = "RedWood",
                             ParkState = "California",
                             Rating = 7
+                        },
+                        new
+                        {
+                            ParkId = 6,
+                            ParkCity = "New City",
+                            ParkName = "New",
+                            ParkState = "New York",
+                            Rating = 10
                         });
                 });
 #pragma warning restore 612, 618

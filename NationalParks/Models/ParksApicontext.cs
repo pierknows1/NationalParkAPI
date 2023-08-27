@@ -19,7 +19,9 @@ namespace NationalParks.Models
             new Park { ParkId = 2, ParkName = "Yosemite", ParkCity = "Yosemite National Park", ParkState = "California", Rating = 9},
             new Park { ParkId = 3, ParkName = "Death Valley", ParkCity = "Furnace Creek", ParkState = "California", Rating = 8},
             new Park { ParkId = 4, ParkName = "Hawaii Volcanoes", ParkCity = "Hawaii National Park", ParkState = "Hawaii", Rating = 10},
-            new Park { ParkId = 5, ParkName = "RedWood", ParkCity = "Crescent City", ParkState = "California", Rating = 7}
+            new Park { ParkId = 5, ParkName = "RedWood", ParkCity = "Crescent City", ParkState = "California", Rating = 7},
+            new Park { ParkId = 6, ParkName = "New", ParkCity = "New City", ParkState = "New York", Rating = 10}
+
     
         );
     }
